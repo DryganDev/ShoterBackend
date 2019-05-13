@@ -7,6 +7,9 @@ public func routes(_ router: Router) throws {
     let userController = UserController()
     router.post("users", use: userController.create)
     
+    let fileController = FileController()
+    router.post("upload", use: fileController.save)
+    
     // basic / password auth protected routes
     let basic = router.grouped(User.basicAuthMiddleware(using: BCryptDigest()))
     basic.post("login", use: userController.login)
