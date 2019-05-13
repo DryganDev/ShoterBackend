@@ -15,8 +15,8 @@ final class FileController {
 //        return token.save(on: req)
 //        let file = File(data: LosslessDataConvertible, filename: String)
 //        return req.future(file)
-        return try req.content.decode(UploadFile.self).map(to: HTTPStatus.self) { file in
-            print(file)
+        return try req.content.decode(File.self).map(to: HTTPStatus.self) { file in
+            
             return .ok
         }
 //            req.content.decode(<#T##content: Decodable.Protocol##Decodable.Protocol#>)
